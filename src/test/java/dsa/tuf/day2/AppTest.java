@@ -102,4 +102,23 @@ public class AppTest {
         Assertions.assertArrayEquals(new int[]{1, 3, 4, 5}, arr1);
         Assertions.assertArrayEquals(new int[]{6, 7, 8}, arr2);
     }
+
+    @Test
+    void transposeOfSquareMatrix() {
+
+        App app = new App();
+        int input[][] = new int[][]{
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        int output[][] = new int[][]{
+                {1, 4, 7},
+                {2, 5, 8},
+                {3, 6, 9}
+        };
+        app.transposeOfSquareMatrix(input);
+        Assertions.assertArrayEquals(input,output);
+    }
 }

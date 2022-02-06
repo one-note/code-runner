@@ -3,6 +3,7 @@ package dsa.tuf.day2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class App {
 
@@ -40,6 +41,7 @@ public class App {
         System.out.println(list);
         return list;
     }
+
     // _ARRAYS
     public int missingElementInSortedArray(int[] arr) {
         int l = 0;
@@ -162,5 +164,30 @@ public class App {
         int t = arr1[i];
         arr1[i] = arr2[j];
         arr2[j] = t;
+    }
+
+    public void transposeOfSquareMatrix(int[][] arr) {
+        int diagonal = 0;
+        int i = 0;
+        int j = 0;
+        int m = arr.length;
+            while (true) {
+                if (diagonal > arr.length)
+                    break;
+                if (i < m && j < m) {
+                    int t = arr[diagonal][j];
+                    arr[diagonal][j] = arr[j][diagonal];
+                    arr[j][diagonal] = t;
+                    i++;
+                    j++;
+                }
+                if (i == arr.length) {
+                    diagonal++;
+                    i = j = diagonal;
+                }
+        }
+        Stream.of(arr).forEach(e -> {
+            System.out.println(Arrays.toString(e));
+        });
     }
 }
