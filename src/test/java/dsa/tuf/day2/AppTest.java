@@ -4,6 +4,7 @@ package dsa.tuf.day2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -119,6 +120,37 @@ public class AppTest {
                 {3, 6, 9}
         };
         app.transposeOfSquareMatrix(input);
-        Assertions.assertArrayEquals(input,output);
+        Assertions.assertArrayEquals(input, output);
+    }
+
+    @Test
+    void mergeIntervals() {
+
+        App app = new App();
+        List<Integer[]> intervals = new ArrayList(
+        ) {{
+            add(new Integer[]{1, 4});
+            add(new Integer[]{2, 3});
+            add(new Integer[]{1, 6});
+            add(new Integer[]{3, 7});
+            add(new Integer[]{4, 6});
+            add(new Integer[]{3, 5});
+            add(new Integer[]{5, 9});
+
+            add(new Integer[]{14, 16});
+            add(new Integer[]{11, 15});
+        }
+
+            @Override
+            public String toString() {
+                return super.toString();
+            }
+        };
+        intervals = app.mergeIntervals(intervals);
+        for(Integer[] element: intervals){
+            if(element!=null){
+                System.out.println(Arrays.toString(element));
+            }
+        }
     }
 }

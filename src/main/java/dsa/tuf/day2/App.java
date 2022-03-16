@@ -1,7 +1,9 @@
 package dsa.tuf.day2;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -9,6 +11,29 @@ public class App {
 
     public static void main(String[] args) {
 
+    }
+
+    public List<Integer[]> mergeIntervals(List<Integer[]> intervals) {
+        Collections.sort(intervals, (e1, e2) -> {
+            return Integer.compare(e1[0], e2[0]);
+        });
+
+        Integer[] previous = intervals.get(0);
+        for (int i = 1; i < intervals.size(); i++) {
+            Integer[] current = intervals.get(i);
+            if (previous[0] <= current[0] && current[0] <= previous[1]) {
+                if (previous[0] <= current[1] && current[1] <= previous[1]) {
+                    intervals.set(i, null);
+                } else {
+                    intervals.set(i, null);
+                    previous[1] = current[1];
+                }
+            }
+            else {
+                previous = current;
+            }
+        }
+        return intervals;
     }
 
     // max value in array of size n is n+1
@@ -171,20 +196,20 @@ public class App {
         int i = 0;
         int j = 0;
         int m = arr.length;
-            while (true) {
-                if (diagonal > arr.length)
-                    break;
-                if (i < m && j < m) {
-                    int t = arr[diagonal][j];
-                    arr[diagonal][j] = arr[j][diagonal];
-                    arr[j][diagonal] = t;
-                    i++;
-                    j++;
-                }
-                if (i == arr.length) {
-                    diagonal++;
-                    i = j = diagonal;
-                }
+        while (true) {
+            if (diagonal > arr.length)
+                break;
+            if (i < m && j < m) {
+                int t = arr[diagonal][j];
+                arr[diagonal][j] = arr[j][diagonal];
+                arr[j][diagonal] = t;
+                i++;
+                j++;
+            }
+            if (i == arr.length) {
+                diagonal++;
+                i = j = diagonal;
+            }
         }
         Stream.of(arr).forEach(e -> {
             System.out.println(Arrays.toString(e));
