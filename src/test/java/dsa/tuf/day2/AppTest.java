@@ -36,9 +36,26 @@ public class AppTest {
     }
 
     @Test
+    void oneRepeatAndMissingArray_1_N(){
+        App app = new App();
+        int[] arr = {5,2,3,4,5};
+        app.oneRepeatAndMissingNumber1_N_Array(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
     void repeatAndMissingNumberArray_2() {
         App app = new App();
         int[] arr = {1, 2, 3, 4, 5, 1, 5};
+        List<Integer> actualList = app.repeatAndMissingNumberArray(arr);
+        List<Integer> expectedList = Arrays.asList(1, 6, 5, 7);
+        Assertions.assertEquals(expectedList, actualList);
+    }
+
+    @Test
+    void repeatAndMissingNumberArray_3() {
+        App app = new App();
+        int[] arr = {4,7,2,1,8,4,6,5};
         List<Integer> actualList = app.repeatAndMissingNumberArray(arr);
         List<Integer> expectedList = Arrays.asList(1, 6, 5, 7);
         Assertions.assertEquals(expectedList, actualList);
@@ -152,5 +169,12 @@ public class AppTest {
                 System.out.println(Arrays.toString(element));
             }
         }
+    }
+
+    @Test
+    void missingNumbersInRange_Of_Array() {
+        App app = new App();
+        int[] arr = new int[] {6,7,10,12};
+        app.missingNumbersInRange_Of_Array(arr);
     }
 }

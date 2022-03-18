@@ -36,7 +36,55 @@ public class App {
         return intervals;
     }
 
+    // missing element is (i+1) when arr[i] > 0
+    // repeating element is absIndex when !(arr[absIndex] > 0)
+    public void oneRepeatAndMissingNumber1_N_Array(int[] arr){
+        int i =0;
+        while(i < arr.length){
+
+            int absIndex = Math.abs(arr[i]);
+
+            if(arr[absIndex-1] > 0){
+                arr[absIndex-1] = -arr[absIndex-1];
+            }
+            else{
+                System.out.println("repeating element is: "+absIndex);
+            }
+            i++;
+        }
+        i = 0;
+        while(i < arr.length)
+        {
+            if(arr[i] > 0)
+            {
+                System.out.println("missing element is: "+(i+1));
+            }
+            i++;
+        }
+    }
+
+    public void missingNumbersInRange_Of_Array(int[] arr)
+    {
+        int index = 0;
+
+        int currentElement = arr[0];
+        int maxElement = arr[arr.length-1];
+
+        while(currentElement < maxElement)
+        {
+            if(arr[index] == currentElement){
+                index++;
+            }
+            else{
+                System.out.println("missing element: "+currentElement);
+            }
+            currentElement++;
+        }
+    }
+
     // max value in array of size n is n+1
+    // swap when arr[i]!=arr[arr[i]-1] else i++
+    // if arr[i]-1!=i then duplicate = arr[i] and missing = (i+1)
     public List<Integer> repeatAndMissingNumberArray(int[] arr) {
         for (int i = 0; i < arr.length; ) {
             int tempIndex = arr[i] - 1;
